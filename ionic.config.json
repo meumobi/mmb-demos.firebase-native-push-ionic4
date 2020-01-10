@@ -1,0 +1,7 @@
+{
+  "name": "mmb-demos.firebase-native-push-ionic4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
