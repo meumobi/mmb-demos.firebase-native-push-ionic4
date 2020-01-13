@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FirebaseX,
   ],
   bootstrap: [AppComponent]
 })
