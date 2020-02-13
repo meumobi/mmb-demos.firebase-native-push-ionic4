@@ -12,22 +12,30 @@ export class FcmService {
   constructor(
     private firebase: FirebaseX,
     private db: AngularFirestore,
-    private platform: Platform
   ) { }
 
-  async getToken() {
-    let token: string;
-    if (this.platform.is('android')) {
-      token = await this.firebase.getToken();
-    } else if (this.platform.is('ios')) {
-      token = await this.firebase.getToken();
-      await this.firebase.grantPermission();
-    }
+  async getToken(): Promise<string> {
+    try {
+      const enabled = await this.firebase.hasPermission();
+      if (!enabled) {
+        await this.firebase.grantPermission();
+      }
 
-    return this.saveTokenToFirestore(token);
+      const fcmToken = await this.firebase.getToken();
+      if (fcmToken) {
+        console.log('Got token');
+        console.log('FCM token: ', fcmToken);
+        this.saveTokenToFirestore(fcmToken);
+      }
+
+      return fcmToken;
+
+    } catch (error) {
+      console.warn('Notification token error', error);
+    }
   }
 
-  async hasPermission() {
+  async hasPermission(): Promise<boolean> {
     const hasPermission = await this.firebase.hasPermission();
     console.log('Permission is: '  + (hasPermission ? 'granted' : 'denied'));
 
@@ -41,10 +49,10 @@ export class FcmService {
 
     const docData = {
       token,
-      userId: 'testUser' // get from auth user
+      userId: 'testUser-' + Date.now()
     };
 
-    return devicesRef.doc(token).set(docData);
+    devicesRef.doc(token).set(docData);
   }
 
   listenToNotifications(): Observable<any> {
