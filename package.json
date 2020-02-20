@@ -26,10 +26,9 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.7.1",
     "cordova-android": "8.1.0",
-    "cordova-ios": "5.1.1",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.0",
-    "cordova-plugin-firebasex": "^7.0.1",
+    "cordova-plugin-firebasex": "~8.0.0",
     "core-js": "^2.5.4",
     "firebase": "^7.6.2",
     "rxjs": "~6.5.1",
@@ -80,10 +79,10 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-firebasex": {
-        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "false",
+        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
         "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "false",
         "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "false",
-        "ANDROID_ICON_ACCENT": "#FF00FFFF",
+        "ANDROID_ICON_ACCENT": "#FEC500FF",
         "ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION": "17.0.0",
         "ANDROID_FIREBASE_ANALYTICS_VERSION": "17.2.1",
         "ANDROID_FIREBASE_MESSAGING_VERSION": "20.0.0",
@@ -93,11 +92,11 @@
         "ANDROID_CRASHLYTICS_VERSION": "2.10.1",
         "ANDROID_CRASHLYTICS_NDK_VERSION": "2.1.1",
         "IOS_STRIP_DEBUG": "true",
-        "SETUP_RECAPTCHA_VERIFICATION": "true"
+        "SETUP_RECAPTCHA_VERIFICATION": "true",
+        "ANDROID_PLAY_SERVICES_AUTH_VERSION": "17.0.0"
       }
     },
     "platforms": [
-      "ios",
       "android"
     ]
   }
